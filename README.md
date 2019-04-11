@@ -1,2 +1,2 @@
 # phalcon-skeleton
-my falcon skeleton
+my phalcon skeleton
