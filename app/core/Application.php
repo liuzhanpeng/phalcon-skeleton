@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 
+use App\Core\ConfigParser;
+
 /**
  * 应用程序
  * @author zhanpeng liu <liuzhanpeng@gmail.com>
@@ -21,8 +23,8 @@ class Application extends \Phalcon\Mvc\Application
     {
         $this->registerAutoloaders();
         
-        // 转换成config对象
-        $this->config = new \App\Core\Config($config);
+        // 配置数组自定义字符处理
+        $this->config = (new ConfigParser($config))->getConfig();
 
         if ($this->config->get('debug')) {
             error_reporting(E_ALL);
@@ -67,7 +69,7 @@ class Application extends \Phalcon\Mvc\Application
                 (new $provider($name))->register($di);
             } else {
                 $className = $provider->get('className');
-                $params    = $provider->get('params', []);
+                $params    = $provider->get('params');
                 (new $className($name, $params))->register($di);
             }
         }
@@ -77,7 +79,7 @@ class Application extends \Phalcon\Mvc\Application
         foreach ($this->config->get('listeners') as $name => $listeners) {
             foreach ($listeners as $listener) {
                 $className = $listener->$listener->get('className');
-                $params    = $listener->get('params', []);
+                $params    = $listener->get('params');
                 $priority  = $listener->get('priority', 100);
                 $eventsManager->attach($name, new $className($params), $priority);
             }

@@ -37,7 +37,7 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
                     (new $provider($name))->register($di);
                 } else {
                     $className = $provider->get('className');
-                    $params    = $provider->get('params', []);
+                    $params    = $provider->get('params');
                     (new $className($name, $params))->register($di);
                 }
             }
@@ -49,7 +49,7 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
             foreach ($moduleConfig->get('listeners') as $name => $listeners) {
                 foreach ($listeners as $listener) {
                     $className = $listener->get('className');
-                    $params    = $listener->get('params', []);
+                    $params    = $listener->get('params');
                     $priority  = $listener->get('priority', 100);
                     $eventsManager->attach($name, new $className($params), $priority);
                 }
