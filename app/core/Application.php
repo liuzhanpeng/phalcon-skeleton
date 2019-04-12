@@ -2,6 +2,7 @@
 namespace App\Core;
 
 use App\Core\ConfigParser;
+use Phalcon\Mvc\Model;
 
 /**
  * 应用程序
@@ -94,6 +95,11 @@ class Application extends \Phalcon\Mvc\Application
      */
     public function run()
     {
+        Model::setup([
+            'notNullValidations' => false,
+            'columnRenaming'     => false,
+        ]);
+
         $this->registerServices();
 
         // 注册模块
