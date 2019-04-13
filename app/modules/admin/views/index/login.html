@@ -19,7 +19,6 @@
     .login-box {
         margin-top: -5%;
         width: 330px;
-        height: 290px;
         background: #fff;
         border-radius: 5px;
         padding: 30px;
@@ -50,11 +49,11 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-row layui-col-space10">
-                        <div class="layui-col-md6">
+                        <div class="layui-col-md6 layui-col-xs12">
                             <input name="captcha" placeholder="验证码" class="layui-input">
                         </div>
-                        <div class="layui-col-md6" style="text-align: right;">
-                            <img id="captcha-img" src="<?=$this->url->get('index/captcha')?>">
+                        <div class="layui-col-md6 layui-col-xs12" style="text-align: right;">
+                            <img id="captcha-img" src="<?=$this->url->get('index/captcha')?>" style="width: 100%; cursor: pointer;">
                         </div>
                     </div>
                 </div>
