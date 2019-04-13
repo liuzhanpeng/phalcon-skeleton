@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>提示信息</title>
+    <style>
+    .msg {
+        color: red;
+        font-size: 18px;
+    }
+    </style>
+</head>
+<body>
+    <div class="msg"><?=$msg?></div>
+    <div class="url">
+    <?php if (isset($url)): ?>
+    [<a href="<?=$url?>">返回</a>]
+    <?php else: ?>
+    [<a href="javascript: history.back();">返回</a>]
+    <?php endif ?>
+    </div>
+</body>
+</html>

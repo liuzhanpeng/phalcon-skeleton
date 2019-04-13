@@ -1,5 +1,6 @@
 {
     "require": {
-        "phalcon/incubator": "^3.4"
+        "phalcon/incubator": "^3.4",
+        "gregwar/captcha": "1.*" 
     }
 }

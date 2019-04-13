@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>管理登录</title>
+    <link rel="stylesheet" href="/admin/layui/css/layui.css">
+    <style>
+    html, body {
+        height: 100%;
+        background: #393D49;
+    }
+    .login-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .login-box {
+        margin-top: -5%;
+        width: 350px;
+        height: 300px;
+        background: #fff;
+        border-radius: 5px;
+        padding: 30px;
+        padding-top: 10px;
+    }
+    .login-title {
+        height: 80px;
+        line-height: 80px;
+        font-size: 30px;
+        font-weight: 100; 
+        text-align: center;
+    }
+    .login-title .version {
+        font-size: 24px;
+    }
+    </style>
+</head>
+<body>
+    <div class="layui-fluid login-wrap">
+        <div class="login-box">
+            <div class="login-title">管理系统&nbsp;<span class="version">v1.0.0</span></div>
+            <form class="layui-form" method="post">
+                <div class="layui-form-item">
+                    <input type="text" name="account" placeholder="账号" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="password" name="passwd" placeholder="密码" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-row layui-col-space10">
+                        <div class="layui-col-md6">
+                            <input name="captcha" placeholder="验证码" class="layui-input">
+                        </div>
+                        <div class="layui-col-md6" style="text-align: right;">
+                            <img id="captcha-img" src="<?=$this->url->get('index/captcha')?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-fluid layui-btn-lg">登 录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="/admin/layui/layui.js"></script>
+<script>
+
+</script>
+</body>
+</html>
