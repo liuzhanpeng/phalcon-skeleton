@@ -158,6 +158,16 @@ return [
                             ]
                         ]
                     ]
+                ],
+                'captcha' => [
+                    'className' => App\Providers\CaptchaProvider::class,
+                    'params' => [
+                        'key' => 'captcha',
+                        'lifetime' => 60 * 10,
+                        'len' => 5,
+                        'width' => 150,
+                        'height' => 38,
+                    ]
                 ]
             ],
             'listeners' => [

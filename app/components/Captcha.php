@@ -85,7 +85,7 @@ class Captcha extends \Phalcon\Mvc\User\Component
      */
     public function check(string $code, bool $unset = true) : bool
     {
-        if(!$this->session->has($this->ke)) {
+        if(!$this->session->has($this->key)) {
             return false;
         }
 
