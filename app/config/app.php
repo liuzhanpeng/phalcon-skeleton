@@ -1,6 +1,6 @@
 <?php
-$router   = require 'router.php';
-$db       = require 'db.php';
+$router = require 'router.php';
+$db     = require 'db.php';
 
 /**
  * 应用配置
@@ -60,12 +60,12 @@ return [
         ],
         'db' => [
             'className' => App\Providers\DbProvider::class,
-            'params' => $db
+            'params'    => $db
         ],
         'modelsManager' => App\Providers\ModelsManagerProvider::class,
-        'modelsCache' => [
+        'modelsCache'   => [
             'className' => App\Providers\ModelsCacheProvider::class,
-            'params' => [
+            'params'    => [
                 'adapter' => 'memory',
             ],
             // 'params' => [
@@ -82,7 +82,7 @@ return [
         ],
         'modelsMetadata' => [
             'className' => App\Providers\ModelsMetadataProvider::class,
-            'params' => [
+            'params'    => [
                 'adapter' => 'memory',
             ],
             // 'params' => [
@@ -99,8 +99,8 @@ return [
         ],
         'annotations' => [
             'className' => App\Providers\AnnotationsProvider::class,
-            'params' => [
-                'adapter'  => 'memory',
+            'params'    => [
+                'adapter' => 'memory',
             ],
             // 'params' => [
             //     'adapter' => 'files',
@@ -115,9 +115,58 @@ return [
         'url' => App\Providers\UrlProvider::class,
     ],
 
-    'listeners' => [],
+    // 监听器
+    'listeners' => [
+        'dispatch' => [
+            [
+                'className' => App\Listeners\ExceptionListener::class,
+                'params'    => [
+                    'logFile' => APP_PATH . '/var/logs/exception.' . date('Y-m-d') . '.log',
+                ]
+            ],
+            [
+                'className' => App\Listeners\NotFoundActionListener::class,
+            ]
+        ],
+        'db' => [
+            [
+                'className' => App\Listeners\DbProfileListener::class,
+                'params' => [
+                    'logFile' => APP_PATH . '/var/logs/profile.' . date('Y-m-d') . '.log',
+                ]
+            ]
+        ]
+    ],
 
     'modules' => [
-        'admin' => []
+        'admin' => [
+            'services' => [
+                'view' => App\Providers\ViewProvider::class,
+                'user' => [
+                    'className' => App\Providers\UserProvider::class,
+                    'params' => [
+                        'authenticator' => [
+                            'className' => App\Modules\Admin\Components\Authenticator::class,
+                        ],
+                        'accessChecker' => [
+                            'className' => App\Modules\Admin\Components\AccessChecker::class
+                        ],
+                        'storage' => [
+                            'className' => App\Components\Auth\SessionStorage::class,
+                            'params' => [
+                                'key' => 'AdminIdentity'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            'listeners' => [
+                'dispatch' => [
+                    [
+                        'className' => App\Modules\Admin\Listeners\AccessCheckListener::class,
+                    ]
+                ]
+            ]
+        ]
     ],
 ];

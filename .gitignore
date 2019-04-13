@@ -2,3 +2,4 @@
 /config/development/
 vendor
 composer.lock
+app/var
