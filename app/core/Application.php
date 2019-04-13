@@ -79,7 +79,7 @@ class Application extends \Phalcon\Mvc\Application
         $eventsManager = $di->get('eventsManager');
         foreach ($this->config->get('listeners') as $name => $listeners) {
             foreach ($listeners as $listener) {
-                $className = $listener->$listener->get('className');
+                $className = $listener->get('className');
                 $params    = $listener->get('params');
                 $priority  = $listener->get('priority', 100);
                 $eventsManager->attach($name, new $className($params), $priority);
