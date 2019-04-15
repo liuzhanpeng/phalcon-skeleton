@@ -50,22 +50,35 @@
                 <div class="layui-form-item">
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md6 layui-col-xs12">
-                            <input name="captcha" placeholder="验证码" class="layui-input">
+                            <input type="text" name="captcha" placeholder="验证码" class="layui-input">
                         </div>
                         <div class="layui-col-md6 layui-col-xs12" style="text-align: right;">
-                            <img id="captcha-img" src="<?=$this->url->get('index/captcha')?>" style="width: 100%; cursor: pointer;">
+                            <img id="img-captcha" src="<?=$this->url->get('index/captcha')?>" style="width: 100%; cursor: pointer;">
                         </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <button class="layui-btn layui-btn-fluid layui-btn-lg">登 录</button>
+                    <button type="button" lay-submit class="layui-btn layui-btn-fluid layui-btn-lg" data-loading="正在登录..." >登 录</button>
                 </div>
             </form>
         </div>
     </div>
+<script src="/admin/js/jquery.js"></script>
+<script src="/admin/js/app.js"></script>
 <script src="/admin/layui/layui.js"></script>
 <script>
+$('#img-captcha').click(function() {
+    $(this).attr('src', $(this).attr('src'));
+});
+layui.use('form', function() {
+    var form = layui.form;
+    var layer = layui.layer;
 
+    ajaxSubmit(form, null, function(data) {
+        $('#img-captcha').click();
+        alert(data.msg);
+    });
+});
 </script>
 </body>
 </html>

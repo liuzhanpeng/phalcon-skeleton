@@ -72,7 +72,7 @@ class Captcha extends \Phalcon\Mvc\User\Component
 
         $this->session->set($this->key, [
             'phrase' => $captchaBuilder->getPhrase(),
-            'exprie' => time() + $this->lifetime,
+            'expire' => time() + $this->lifetime,
         ]);
 
         $captchaBuilder->output();
@@ -83,8 +83,11 @@ class Captcha extends \Phalcon\Mvc\User\Component
      * @param string $code 验证码
      * @param bool $unset 检查后是否删除session 
      */
-    public function check(string $code, bool $unset = true) : bool
+    public function check(?string $code, bool $unset = true) : bool
     {
+        if (!$code) {
+            return false;
+        }
         if(!$this->session->has($this->key)) {
             return false;
         }

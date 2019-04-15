@@ -23,9 +23,9 @@ class DbProfileListener
      * 构造函数
      * @param string $logFile 日志文件路径
      */
-    public function __construct($logFile)
+    public function __construct($params)
     {
-        $this->logFile = $logFile;
+        $this->logFile = $params->get('logFile');
         $this->profiler = new \Phalcon\Db\Profiler();
     }
 
@@ -40,6 +40,6 @@ class DbProfileListener
 
         $logger = new \Phalcon\Logger\Adapter\File($this->logFile);
         $profile = $this->profiler->getLastProfile();
-        $logger->log(sprintf('%s [%s] %s', $profile->getSQLStatement(), $profile->getSqlVariables(), $profile->getTotalElapsedSeconds()));
+        $logger->log(sprintf('%s [%s] %s', $profile->getSQLStatement(), json_encode($profile->getSqlVariables()), $profile->getTotalElapsedSeconds()));
     }
 }

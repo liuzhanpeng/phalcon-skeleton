@@ -15,7 +15,7 @@ class AccessCheckListener extends \Phalcon\Mvc\User\Plugin
         $annotations = $this->annotations->getMethod($dispatcher->getControllerClass(), $dispatcher->getActiveMethod());
 
         // 公开资源，任何用户都可访问
-        if ($annotations->has('PublicAction')) {
+        if ($annotations->has('public')) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class AccessCheckListener extends \Phalcon\Mvc\User\Plugin
         }
 
         // 基础资源，用户登录后就可访问
-        if ($annotations->has('BaseAction')) {
+        if ($annotations->has('basic')) {
             return true;
         }
 

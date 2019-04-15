@@ -1,12 +1,12 @@
 <?php
 namespace App\Modules\Admin\Controllers;
 
-use App\Core\Components\Auth\AuthenticationException;
+use App\Components\Auth\AuthenticationException;
 
 class IndexController extends BaseController
 {
     /**
-     * @BaseAction
+     * @basic
      */
     public function indexAction()
     {
@@ -14,7 +14,7 @@ class IndexController extends BaseController
     }
 
     /**
-     * @PublicAction
+     * @public
      */
     public function loginAction()
     {
@@ -44,7 +44,7 @@ class IndexController extends BaseController
     }
 
     /**
-     * @PublicAction
+     * @public
      */
     public function captchaAction()
     {
@@ -53,7 +53,7 @@ class IndexController extends BaseController
     }
 
     /**
-     * @BaseAction
+     * @basic
      */
     public function logoutAction()
     {
@@ -62,7 +62,7 @@ class IndexController extends BaseController
     }
 
     /**
-     * @PublicAction
+     * @public
      */
     public function errorAction()
     {
