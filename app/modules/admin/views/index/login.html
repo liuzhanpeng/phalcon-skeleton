@@ -37,32 +37,32 @@
     </style>
 </head>
 <body>
-    <div class="layui-fluid login-wrap">
-        <div class="login-box">
-            <div class="login-title">管理系统&nbsp;<span class="version">v1.0.0</span></div>
-            <form class="layui-form" method="post">
-                <div class="layui-form-item">
-                    <input type="text" name="account" placeholder="账号" class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <input type="password" name="passwd" placeholder="密码" class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-row layui-col-space10">
-                        <div class="layui-col-md6 layui-col-xs12">
-                            <input type="text" name="captcha" placeholder="验证码" class="layui-input">
-                        </div>
-                        <div class="layui-col-md6 layui-col-xs12" style="text-align: right;">
-                            <img id="img-captcha" src="<?=$this->url->get('index/captcha')?>" style="width: 100%; cursor: pointer;">
-                        </div>
+<div class="layui-fluid login-wrap">
+    <div class="login-box">
+        <div class="login-title">管理系统&nbsp;<span class="version">v1.0.0</span></div>
+        <form class="layui-form" method="post">
+            <div class="layui-form-item">
+                <input type="text" name="account" placeholder="账号" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <input type="password" name="passwd" placeholder="密码" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-md6 layui-col-xs12">
+                        <input type="text" name="captcha" placeholder="验证码" class="layui-input">
+                    </div>
+                    <div class="layui-col-md6 layui-col-xs12" style="text-align: right;">
+                        <img id="img-captcha" src="<?=$this->url->get('index/captcha')?>" style="width: 100%; cursor: pointer;">
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <button type="button" lay-submit class="layui-btn layui-btn-fluid layui-btn-lg" data-loading="正在登录..." >登 录</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="layui-form-item">
+                <button type="button" lay-submit class="layui-btn layui-btn-fluid layui-btn-lg" data-loading="正在登录..." >登 录</button>
+            </div>
+        </form>
     </div>
+</div>
 <script src="/admin/js/jquery.js"></script>
 <script src="/admin/js/app.js"></script>
 <script src="/admin/layui/layui.js"></script>
